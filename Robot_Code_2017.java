@@ -115,8 +115,13 @@ should be used for any initialization code
 		}
 		//drives straight forward or straight backward
 		
-		if(rightYAxis > 0 || rightYAxis < 0){
-			rDrive.drive(rightYAxis, curveright); //turns right or left
+		if(rightYAxis > 0){
+			rDrive.drive(rightYAxis, curveright); //turns right
+			Timer.delay(0.01);
+		}
+		
+		if(rightYAxis < 0){
+			rDrive.drive(rightYAxis, curveleft); //turns left
 			Timer.delay(0.01);
 		}
 
