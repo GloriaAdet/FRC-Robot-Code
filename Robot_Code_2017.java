@@ -136,7 +136,7 @@ should be used for any initialization code
 		}
 		
 		if(leftYAxis == 0){
-			climbM.set(0);;
+			climbM.set(0);
 		}
 
 		if(buttonY){
