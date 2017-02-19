@@ -37,18 +37,12 @@ should be used for any initialization code
 	Spark rightM;
 	Spark shootM;
 	Spark climbM;
-	double curveleft;
-	double curveright;
 	int curvestraight;
-	double outputMagnitudeForward;
-	double outputMagnitudeBackward;
 	boolean buttonY;
-	boolean buttonA;
 	boolean buttonX;
 	double rightXAxis;
 	double rightYAxis;
 	double leftYAxis;
-	double shooterSpeed;
 
 	@Override
 	public void robotInit() {
@@ -108,7 +102,7 @@ should be used for any initialization code
 		//drives straight forward or straight backward
 		
 		if(rightXAxis > 0 || rightXAxis < 0){
-			rDrive.drive(rightYAxis, rightXAxis); //turns right
+			rDrive.drive(rightYAxis, rightXAxis); //turns right or left
 		}
 		
 
