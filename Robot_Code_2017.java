@@ -25,24 +25,23 @@ public class Robot_Code_2017 extends IterativeRobot {
 /*This function is run when the robot is first started up and
 should be used for any initialization code
 */
-	RobotDrive rDrive;
-	Joystick xboxController;
+	RobotDrive rDrive; //drives robot
+	Joystick xboxController; //xbox controller
 	final String defaultAuto = "Default";
 	final String customAuto = "My Auto";
 	String autoSelected;
 	SendableChooser<String> chooser = new SendableChooser<>();
-	double maxSpeed;
 	Timer timer;
-	Spark leftM;
-	Spark rightM;
-	Spark shootM;
-	Spark climbM;
+	Spark leftM; //controls left wheels
+	Spark rightM; // controls right wheels
+	Spark shootM; //motor for shooter
+	Spark climbM; //motor for climber
 	int curvestraight;
-	boolean buttonY;
-	boolean buttonX;
-	double rightXAxis;
-	double rightYAxis;
-	double leftYAxis;
+	boolean buttonY; //controller shooter speed
+	boolean buttonX; //controls shooter speed
+	double rightXAxis; //right joystick x axis
+	double rightYAxis; //right joystick y axis
+	double leftYAxis; //left joystick y axis
 
 	@Override
 	public void robotInit() {
