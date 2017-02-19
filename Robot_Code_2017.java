@@ -97,52 +97,32 @@ should be used for any initialization code
 		rightXAxis = xboxController.getRawAxis(4);//right joystick x axis
 		rightYAxis = xboxController.getRawAxis(5);//right joystick y axis
 		curvestraight = 0;
-		buttonA = xboxController.getRawButton(1);
 		buttonY = xboxController.getRawButton(2);
 		buttonX = xboxController.getRawButton(3);
-		outputMagnitudeForward = 0.5;
-		outputMagnitudeBackward = -0.5;
 		leftYAxis = xboxController.getRawAxis(6);//left joystick x axis
-		maxSpeed = 0.4;
-		shooterSpeed = 1.0;
 
 
 		if(rightYAxis < 0 || rightYAxis > 0){
 			rDrive.drive(rightXAxis, curvestraight);
-			Timer.delay(0.01);
 		}
 		//drives straight forward or straight backward
 		
-		if(rightXAxis > 0){
+		if(rightXAxis > 0 || rightXAxis < 0){
 			rDrive.drive(rightYAxis, rightXAxis); //turns right
-			Timer.delay(0.01);
 		}
 		
-		if(rightXAxis < 0){
-			rDrive.drive(rightYAxis, rightXAxis); //turns left
-			Timer.delay(0.01);
-		}
 
-		if(leftYAxis < 0){
-			climbM.set(maxSpeed);
-			Timer.delay(0.01);
-		}
-
-		if(leftYAxis > 0){
-			climbM.set(-maxSpeed);
-			Timer.delay(0.01);
-		}
-		
-		if(leftYAxis == 0){
-			climbM.set(0);
+		if(leftYAxis < 0 || leftYAxis < 0 || leftYAxis == 0){
+			climbM.set(leftYAxis);
+			Timer.delay(0.01); //climbs according to value of y axis on left joystick
 		}
 
 		if(buttonY){
-			shootM.set(shooterSpeed);
+			shootM.set(1.0);
 			Timer.delay(0.01);
 		}
 		if (buttonX){
-			shootM.set(-shooterSpeed);
+			shootM.set(-1.0);
 			Timer.delay(0.01);
 		}
 
