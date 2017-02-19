@@ -58,11 +58,6 @@ should be used for any initialization code
 		chooser.addObject("My Auto", customAuto);
 		SmartDashboard.putData("Auto choices", chooser);
 		xboxController = new Joystick(0);
-		buttonA = xboxController.getRawButton(1);
-		buttonY = xboxController.getRawButton(2);
-		buttonX = xboxController.getRawButton(3);
-		maxSpeed = 0.4;
-		shooterSpeed = 1.0;
 		timer = new Timer();
 		leftM = new Spark(0);
 		rightM = new Spark(1);
@@ -74,14 +69,6 @@ should be used for any initialization code
 		camera.setResolution(1000, 1000);
 		CvSource outputStream = CameraServer.getInstance().putVideo("Rectangle", 1000, 1000);
 		System.out.println(camera.isConnected());
-		outputMagnitudeForward = 0.5;
-		outputMagnitudeBackward = -0.5;
-		curveleft = -0.5;
-		curveright = 0.5;
-		curvestraight = 0;
-		rightXAxis = xboxController.getRawAxis(4);//right joystick x axis
-		rightYAxis = xboxController.getRawAxis(5);//right joystick y axis#hastag
-		leftYAxis = xboxController.getRawAxis(6);//left joystick x axis
 
 	}
 	@Override
@@ -107,21 +94,32 @@ should be used for any initialization code
 	}
 	@Override
 	public void teleopPeriodic(){
+		rightXAxis = xboxController.getRawAxis(4);//right joystick x axis
+		rightYAxis = xboxController.getRawAxis(5);//right joystick y axis
+		curvestraight = 0;
+		buttonA = xboxController.getRawButton(1);
+		buttonY = xboxController.getRawButton(2);
+		buttonX = xboxController.getRawButton(3);
+		outputMagnitudeForward = 0.5;
+		outputMagnitudeBackward = -0.5;
+		leftYAxis = xboxController.getRawAxis(6);//left joystick x axis
+		maxSpeed = 0.4;
+		shooterSpeed = 1.0;
 
 
-		if(rightXAxis < 0 || rightXAxis > 0){
-			rDrive.drive(rightXAxis, curvestraight); //move forward or backward
+		if(rightYAxis < 0 || rightYAxis > 0){
+			rDrive.drive(rightXAxis, curvestraight);
 			Timer.delay(0.01);
 		}
 		//drives straight forward or straight backward
 		
-		if(rightYAxis > 0){
-			rDrive.drive(rightYAxis, curveright); //turns right
+		if(rightXAxis > 0){
+			rDrive.drive(rightYAxis, rightXAxis); //turns right
 			Timer.delay(0.01);
 		}
 		
-		if(rightYAxis < 0){
-			rDrive.drive(rightYAxis, curveleft); //turns left
+		if(rightXAxis < 0){
+			rDrive.drive(rightYAxis, rightXAxis); //turns left
 			Timer.delay(0.01);
 		}
 
